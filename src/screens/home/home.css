@@ -1,43 +1,37 @@
 .posts-card-container {
     margin: 1% 10% 1% 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: normal;
 }
 
 .post-card {
-    margin: 10px;
+    margin: 15px;
     width: auto;
     height: fit-content;
 }
 
-.avatar{
-    border: 1px solid whitesmoke;
-}
-
 .post-image {
-    height: 500px;
-    width: 500px;
-    margin: 5px;
-}
-
-.horizontal-rule {
-    border-top: 2px solid lightgray;
+    height: 640px;
+    width: 640px;
 }
 
 .post-caption {
     overflow: hidden;
     text-overflow: clip;
-    margin-top: 5px;
 }
 
-.post-tags {
-    color: blue;
+.post-tags{
+    text-decoration: none;
 }
 
 .likes {
     display: flex;
     flex-direction: row;
+    padding: 10px 10px 10px 10px;
 }
 
-.post-comment {
+.post-comment{
     display: flex;
 }
 
@@ -47,12 +41,6 @@
 
 .add-button {
     cursor: pointer;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin: 20px;
 }
 
-.divider{
-    margin-top: 3px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-}
