@@ -1,0 +1,19 @@
+.main_container{
+    background: whitesmoke;
+    width: auto;
+    height: auto;
+}
+#profile-pic {
+    width: 100px;
+    height: 100px;
+}
+
+#edit-profile {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+#user_name{
+    margin: 10px;
+} 
