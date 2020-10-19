@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import Header from "../../common/header/Header";
+
 import './Home.css'
+
 //Router import for redirection.
 import {Redirect} from 'react-router-dom';
+
 import {
     Avatar,
     Button,
@@ -14,12 +17,15 @@ import {
     Divider,
     FormControl,
     Grid,
-    TextField
+    TextField, Typography
 } from '@material-ui/core'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+
 import {red} from '@material-ui/core/colors';
+
 class Home extends Component {
+
     constructor() {
         super();
         this.baseUrl = 'https://api.instagram.com/v1/';
@@ -32,17 +38,22 @@ class Home extends Component {
             searchText: ''
         }
     }
+
     componentDidMount() {
-        this.fetchOwnerInfo();
-        this.fetchMostRecentMedia();
+        if (this.props.location.state !== undefined) {
+            this.fetchOwnerInfo();
+            this.fetchMostRecentMedia();
+        }
     }
+
     render() {
         if (this.props.location.state === undefined) {
             return <Redirect to='/'/>
         }
         if (this.props.location.state.loginSuccess === true) {
             return <div>
-                <div><Header {...this.props} isLoggedIn={true} showSearchBox={true} profilePictureUrl={this.state.profile_picture}
+                <div><Header {...this.props} isLoggedIn={true} showSearchBox={true}
+                             profilePictureUrl={this.state.profile_picture}
                              onSearch={this.onSearch} showMyAccount={true}/></div>
                 <Container className='posts-card-container'>
                     <Grid container spacing={2} alignContent='center' justify='flex-start' direction='row'>
@@ -51,14 +62,17 @@ class Home extends Component {
                                 <Grid item xs={6} key={details.id}>
                                     <Card key={details.id + '_card'}>
                                         <CardHeader
-                                            avatar={<Avatar variant="circle" src={details.user.profile_picture}/>}
-                                            avatar={<Avatar variant="circle" src={details.user.profile_picture} className='avatar'/>}
+                                            avatar={<Avatar variant="circle" src={details.user.profile_picture}
+                                                            className='avatar'/>}
                                             title={details.user.username}
                                             subheader={new Date(details.created_time * 1000).toLocaleString()}/>
-                                        <CardMedia style={{height: 0,paddingTop: '56.25%'}} image={details.images.standard_resolution.url}/>
-                                        <Divider variant="middle"/>
+                                        <CardMedia style={{height: 0, paddingTop: '56.25%', marginBottom: 5}}
+                                                   image={details.images.standard_resolution.url}/>
+                                        <Divider variant="middle" className='divider'/>
                                         <CardContent>
-                                            <div className='post-caption'>{details.caption.text.split("\n")[0]}</div>
+                                            <div
+                                                className='post-caption'>{details.caption.text.split("\n")[0]}</div>
+
                                             <div className='post-tags'>
                                                 {details.tags.map((tag, index) => (
                                                     <span key={index}>{'#' + tag + ' '}</span>)
@@ -74,20 +88,26 @@ class Home extends Component {
                                                         <FavoriteBorderIcon fontSize='default'
                                                                             onClick={() => this.onFavIconClick(index)}/>
                                                 }
+
                                                 <pre> </pre>
-                                                <span>{this.state.likes[index] ? details.likes.count + 1 + ' likes' : details.likes.count + ' likes'}</span>
+                                                <Typography>
+                                                    <span>{this.state.likes[index] ? details.likes.count + 1 + ' likes' : details.likes.count + ' likes'}</span>
+                                                </Typography>
                                             </div>
+
                                             <div id='all-comments'>
                                                 {
                                                     this.state.comments[index] ?
                                                         (this.state.comments)[index].map((comment, index) => (
-                                                            <p key={index}><b>{details.user.username}</b> : {comment}
+                                                            <p key={index}>
+                                                                <b>{details.user.username}</b> : {comment}
                                                             </p>
                                                         ))
                                                         :
                                                         <p></p>
                                                 }
                                             </div>
+
                                             <div className='post-comment'>
                                                 <FormControl className='post-comment-form-control'>
                                                     <TextField id={'textfield-' + index} label="Add a comment"/>
@@ -109,23 +129,34 @@ class Home extends Component {
             </div>
         }
     }
+
     fetchOwnerInfo = () => {
         let data = null;
+
         let xhr = new XMLHttpRequest();
+
         let that = this;
+
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
                 that.setState({profile_picture: JSON.parse(this.responseText).data.profile_picture});
             }
         });
+
         let url = this.baseUrl + "users/self/?access_token=" + sessionStorage.getItem("access-token");
+
         xhr.open("GET", url);
+
         xhr.send(data);
     }
+
     fetchMostRecentMedia = () => {
         let data = null;
+
         let xhr = new XMLHttpRequest();
+
         let that = this;
+
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
                 that.setState({
@@ -134,15 +165,20 @@ class Home extends Component {
                 });
             }
         });
+
         let url = this.baseUrl + "users/self/media/recent/?access_token=" + sessionStorage.getItem("access-token");
+
         xhr.open("GET", url);
+
         xhr.send(data);
     }
+
     onFavIconClick = (index) => {
         let currentLikes = this.state.likes;
         currentLikes[index] = !currentLikes[index];
         this.setState({'likes': currentLikes})
     }
+
     onAddComment = (index) => {
         var textfield = document.getElementById("textfield-" + index);
         if (textfield.value == null || textfield.value.trim() === "") {
@@ -154,9 +190,12 @@ class Home extends Component {
         } else {
             currentComment[index] = currentComment[index].concat([textfield.value]);
         }
+
         textfield.value = '';
+
         this.setState({'comments': currentComment})
     }
+
     onSearch = (e) => {
         this.setState({'searchText': e.target.value})
         if (this.state.searchText == null || this.state.searchText.trim() === "") {
@@ -168,5 +207,7 @@ class Home extends Component {
             this.setState({filtered_media: filteredRecentMedia});
         }
     }
+
 }
+
 export default Home;
