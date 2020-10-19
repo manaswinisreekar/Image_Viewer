@@ -34,6 +34,7 @@ class Home extends Component {
         if (this.props.location.state === undefined) {
             return <Redirect to='/'/>
         }
+        
         if (this.props.location.state.loginSuccess === true) {
             return <div>
                 <div><Header {...this.props} isLoggedIn={true} profilePictureUrl={this.state.profile_picture}/></div>
