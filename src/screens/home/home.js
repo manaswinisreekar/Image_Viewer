@@ -90,3 +90,4 @@ class Home extends Component {
             if (this.readyState === 4) {
                 that.setState({profile_picture: JSON.parse(this.responseText).data.profile_picture});
             }
+
