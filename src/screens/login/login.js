@@ -21,7 +21,7 @@ import './Login.css'
 const userDetails = {
     username: 'user',
     password: 'password',
-    accessToken: '8661035776.d0fcd39.39f63ab2f88d4f9c92b0862729ee2784'
+    accessToken: 'IGQVJWRUwxWmVKNE04d2NBX2plNGFBaEt3WjB1eVI5NjF6QU44c1doY19oWnhMVWMzTnh1VVBtWEI0N2ZAEYzNsQ0VFVTNKTTJ3SjFMMm1HVFpoUFlHaWFJSE9UaU9DQ1RBWlR2QWNrNVAyVWE0YzhGUHpId3J6YmtuRFZAV'
 };
 
 class Login extends Component {
