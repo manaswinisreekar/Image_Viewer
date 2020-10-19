@@ -19,12 +19,13 @@
 }
 
 .search-box {
-    border-radius: 4px; /* Border radius has to be 4px*/
-    width: 300px; /* Width of the search box has to be 300px */
-    background: #c0c0c0; /* Search-box background color */
+    border-radius: 4px;
+    width: 300px; 
+    background: #c0c0c0; 
     height: 40px;
-    margin: 10px 0px 10px 0px; /* Ensures that search-box is vertically in the center*/
-}
+    margin: 10px 0px 10px 0px; 
+} 
+ 
 
 .horizontal-line{
     margin: 2px 10px 2px 10px;

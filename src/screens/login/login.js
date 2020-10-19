@@ -27,9 +27,6 @@ const userDetails = {
     accessToken: '8661035776.d0fcd39.39f63ab2f88d4f9c92b0862729ee2784'
 };
 
-/**
- * Login component serves as login page.
- */
 class Login extends Component {
 
     constructor() {
@@ -48,6 +45,7 @@ class Login extends Component {
         if (this.state.loginSuccess === true) {
             return <Redirect to={{pathname: '/home', state: {loginSuccess: true}}}/>
         }
+       
         return <div>
             <div><Header/></div>
             <div className='login-card-flex-container'>
