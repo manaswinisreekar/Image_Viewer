@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from "../../common/header/Header";
 import './Home.css'
+//Router import for redirection.
 import {Redirect} from 'react-router-dom';
 import {
     Avatar,
@@ -42,7 +43,6 @@ class Home extends Component {
         if (this.props.location.state.loginSuccess === true) {
             return <div>
                 <div><Header {...this.props} isLoggedIn={true} showSearchBox={true} profilePictureUrl={this.state.profile_picture}
-                             onSearch={this.onSearch}/></div>
                              onSearch={this.onSearch} showMyAccount={true}/></div>
                 <Container className='posts-card-container'>
                     <Grid container spacing={2} alignContent='center' justify='flex-start' direction='row'>
@@ -52,6 +52,7 @@ class Home extends Component {
                                     <Card key={details.id + '_card'}>
                                         <CardHeader
                                             avatar={<Avatar variant="circle" src={details.user.profile_picture}/>}
+                                            avatar={<Avatar variant="circle" src={details.user.profile_picture} className='avatar'/>}
                                             title={details.user.username}
                                             subheader={new Date(details.created_time * 1000).toLocaleString()}/>
                                         <CardMedia style={{height: 0,paddingTop: '56.25%'}} image={details.images.standard_resolution.url}/>

@@ -43,4 +43,6 @@
     cursor: pointer;
     margin: 20px;
 }
-
+.avatar{
+    border: 1px solid whitesmoke;
+}
