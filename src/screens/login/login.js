@@ -128,11 +128,13 @@ class Login extends Component {
         if (this.state.username !== '' && this.state.password !== '') {
             if (this.state.username === userDetails.username && this.state.password === userDetails.password) {
                 this.setState({incorrectCredentialHelperTextDisplay: 'display-none', loginSuccess: true});
+                localStorage.setItem("access-token", userDetails.accessToken);
                 sessionStorage.setItem("access-token", userDetails.accessToken);
             } else {
                 this.setState({incorrectCredentialHelperTextDisplay: 'display-block'});
             }
-        }
+
+        
     }
 
 }
