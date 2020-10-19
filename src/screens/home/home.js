@@ -24,16 +24,14 @@ class Home extends Component {
         super();
         this.baseUrl = 'https://api.instagram.com/v1/';
         this.state = {
-            profile_picture: ''
+            profile_picture: '',
             recent_media: null
         }
     }
-
     componentDidMount() {
         this.fetchOwnerInfo();
         this.fetchMostRecentMedia();
     }
-
     render() {
         console.log(this.state.recent_media)
         if (this.props.location.state === undefined) {
@@ -42,16 +40,17 @@ class Home extends Component {
         if (this.props.location.state.loginSuccess === true) {
             return <div>
                 <div><Header isLoggedIn={true} profilePictureUrl={this.state.profile_picture}/></div>
-                <div><span>Success</span></div>
                 <div className='posts-card-container'>
                     {
                         (this.state.recent_media || []).map((details, index) => (
                             <Card key={details.id} className='post-card'>
+                            <Card key={details.id+'_card'} className='post-card'>
                                 <CardHeader avatar={<Avatar src={details.user.profile_picture}/>}
                                             title={details.user.username}
                                             subheader={new Date(details.created_time * 1000).toLocaleString()}/>
                                 <CardContent>
                                     <img className='post-image' src={details.images.standard_resolution.url}/>
+                                    <img alt={details.id+'_image'} className='post-image' src={details.images.standard_resolution.url}/>
                                     <hr/>
                                     <div className='post-caption'>{details.caption.text.split("\n")[0]}</div>
                                     {details.tags.map((tag, index) => (
@@ -83,34 +82,11 @@ class Home extends Component {
             </div>
         }
     }
-});
-
-let url = this.baseUrl+"users/self/?access_token=" + sessionStorage.getItem("access-token");
-let url = this.baseUrl + "users/self/?access_token=" + sessionStorage.getItem("access-token");
-
-xhr.open("GET", url);
-
-xhr.send(data);
-}
-
-fetchMostRecentMedia = () => {
-let data = null;
-
-let xhr = new XMLHttpRequest();
-
-let that = this;
-
-xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === 4) {
-        that.setState({recent_media: JSON.parse(this.responseText).data});
-    }
-});
-
-let url = this.baseUrl + "users/self/media/recent/?access_token=" + sessionStorage.getItem("access-token");
-
-xhr.open("GET", url);
-
-xhr.send(data);
-}
-}
-export default Home;
+    fetchOwnerInfo = () => {
+        let data = null;
+        let xhr = new XMLHttpRequest();
+        let that = this;
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                that.setState({profile_picture: JSON.parse(this.responseText).data.profile_picture});
+            }
