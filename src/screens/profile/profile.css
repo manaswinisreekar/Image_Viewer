@@ -1,26 +1,23 @@
-.main_container{
-    background: whitesmoke;
-    width: auto;
-    height: auto;
-}
 #profile-pic {
     width: 100px;
     height: 100px;
+    border: 1px solid whitesmoke;
+}
+
+#modal-profile-pic{
+    width: 65px;
+    height: 65px;
+    border: 1px solid whitesmoke;
 }
 
 #edit-profile {
-    width: 30px;
+    width: 35px;
     height: 30px;
     margin-left: 10px;
 }
-
-#user_name{
-    margin: 10px;
-} 
 #user_name{
     margin: 10px;
 }
-
 .edit-modal-div {
     position: absolute;
     top: 50%;
@@ -30,7 +27,6 @@
     background-color: white;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: .3rem;
-
 }
 .selected-image-modal {
     position: absolute;
@@ -44,27 +40,22 @@
     box-shadow: black;
     inline-size: fit-content;
 }
-
 .add-button-grid {
     vertical-align: bottom;
     inline-size: fit-content;
 }
-
 .add-button {
     vertical-align: bottom;
     inline-size: fit-content;
 }
-
 .MuiGrid-spacing-xs-3 > .MuiGrid-item {
     align-self: flex-end;
     inline-size: fit-content;
 }
-
 .MuiGrid-spacing-xs-2 > .MuiGrid-item {
     align-self: flex-start;
     inline-size: fit-content;
 }
-
 .MuiGrid-grid-xs-6 {
     height: 70%;
     width: 70%;
@@ -72,12 +63,18 @@
 
 .comment-section {
     min-height: 150px;
+    min-height: 320px;
 }
 
 .comment-add-section {
     vertical-align: bottom;
 }
-
 .user-detail-section {
     vertical-align: top;
+}
+
+.right-part{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
 }
