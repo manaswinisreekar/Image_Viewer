@@ -1,3 +1,9 @@
+import React, {Component} from 'react';
+import Header from "../../common/header/Header";
+import {Redirect} from 'react-router-dom';
+
+
+
 class Home extends Component {
 
     constructor() {
