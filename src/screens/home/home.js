@@ -70,6 +70,18 @@ class Home extends Component {
             this.setState({filtered_media: filteredRecentMedia});
         }
     }
+    if (this.state.searchText == null || this.state.searchText.trim() === "") {
+        this.setState({filtered_media: this.state.recent_media});
+    } else {
+        let filteredRecentMedia = this.state.recent_media.filter((element)=>{return element.caption.text.toUpperCase().split("\n")[0].indexOf(e.target.value.toUpperCase()) > -1});
+        let filteredRecentMedia = this.state.recent_media.filter((element) => {
+            return element.caption.text.toUpperCase().split("\n")[0].indexOf(e.target.value.toUpperCase()) > -1
+        });
+        this.setState({filtered_media: filteredRecentMedia});
+    }
+}
+}
+export default Home;
 
 }
 

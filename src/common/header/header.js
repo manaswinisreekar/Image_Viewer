@@ -1,3 +1,4 @@
+import React, {Component, Fragment} from 'react';
 import './Header.css';
 import {Redirect} from 'react-router-dom';
 import {Avatar, IconButton, Input, InputAdornment, Menu, MenuItem, Typography} from "@material-ui/core";
@@ -31,10 +32,10 @@ class Header extends Component {
                             <Input className='search-box' type='search' placeholder='Search...' disableUnderline
                                    startAdornment={
                                        <InputAdornment position="start"><SearchIcon/></InputAdornment>
-                                   }/>
                                    } onChange={this.props.onSearch}/>
                             <IconButton id='profile-icon' onClick={this.onProfileIconClick}>
                                 <Avatar alt="profile_picture"
+                                <Avatar variant="circle" alt="profile_picture"
                                         src={this.props.profilePictureUrl}/>
                             </IconButton>
                             <div>
@@ -66,4 +67,3 @@ class Header extends Component {
     }
 }
 export default Header;
-
