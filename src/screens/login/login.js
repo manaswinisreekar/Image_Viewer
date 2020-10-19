@@ -134,7 +134,7 @@ class Login extends Component {
                 this.setState({incorrectCredentialHelperTextDisplay: 'display-block'});
             }
 
-        
+        }
     }
 
 }
