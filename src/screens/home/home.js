@@ -119,5 +119,23 @@ class Home extends Component {
         this.setState({'likes': currentLikes})
     }
 }
+onAddComment = (index) => {
+    var textfield = document.getElementById("textfield-" + index);
+    if (textfield.value == null || textfield.value.trim() === "") {
+        return;
+    }
+    let currentComment = this.state.comments;
+    if (currentComment[index] === undefined) {
+        currentComment[index] = [textfield.value];
+    } else {
+        currentComment[index] = currentComment[index].concat([textfield.value]);
+    }
 
+    textfield.value = '';
+
+    this.setState({'comments': currentComment})
 }
+}
+
+export default Home; 
+
