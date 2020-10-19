@@ -5,7 +5,6 @@ import React, {Component, Fragment} from 'react';
 
 import './Header.css';
 
-import './Header.css';
 
 import {Input, InputAdornment} from "@material-ui/core";
 import {Avatar, IconButton, Input, InputAdornment} from "@material-ui/core";
@@ -19,4 +18,15 @@ render() {
                             <header className='logo'>Image Viewer</header>
                     </div>
                     :
-     
+                    <div className='header-right-flex-container'>
+                    {
+                        this.props.showSearchBox ?
+                            <Input className='search-box' type='search' placeholder='Search...' disableUnderline
+                                   startAdornment={
+                                       <InputAdornment position="start"><SearchIcon/></InputAdornment>
+                                   } onChange={this.props.onSearch}/>
+                            :
+                            null
+                    }
+            }
+            export default header;
