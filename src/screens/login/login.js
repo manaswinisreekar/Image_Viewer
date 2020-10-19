@@ -14,13 +14,10 @@ import {
 
 import {Redirect} from 'react-router-dom';
 
-//Imports Header component to be part of Login page.
 import Header from "../../common/header/Header";
 
-//stylesheet for Login page.
 import './Login.css'
 
-// user details.
 const userDetails = {
     username: 'user',
     password: 'password',

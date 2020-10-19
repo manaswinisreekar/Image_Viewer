@@ -3,7 +3,6 @@ import Header from "../../common/header/Header";
 
 import './Home.css'
 
-//Router import for redirection.
 import {Redirect} from 'react-router-dom';
 
 import {

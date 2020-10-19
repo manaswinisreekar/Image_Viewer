@@ -1,18 +1,13 @@
 import React, {Component, Fragment} from 'react';
 
-//Import of stylesheet for header component.
 import './Header.css';
 
-//Router import for redirection.
 import {Redirect} from 'react-router-dom';
 
 import {Avatar, Divider, IconButton, Input, InputAdornment, Menu, MenuItem, Typography} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 
 
-/**
- * Header Component serves header for multiple pages.
- */
 class Header extends Component {
 
     constructor() {
