@@ -78,4 +78,46 @@ class Home extends Component {
                                             </div>
                                         </div>
                                     </CardContent>
-    
+                                    </Card>
+                        ))
+                    }
+                </div>
+            </div>
+        }
+    }
+    fetchOwnerInfo = () => {
+        let data = null;
+        let xhr = new XMLHttpRequest();
+        let that = this;
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                that.setState({profile_picture: JSON.parse(this.responseText).data.profile_picture});
+            }
+        });
+        let url = this.baseUrl + "users/self/?access_token=" + sessionStorage.getItem("access-token");
+        xhr.open("GET", url);
+        xhr.send(data);
+    }
+    fetchMostRecentMedia = () => {
+        let data = null;
+        let xhr = new XMLHttpRequest();
+        let that = this;
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                that.setState({recent_media: JSON.parse(this.responseText).data});
+            }
+        });
+        let url = this.baseUrl + "users/self/media/recent/?access_token=" + sessionStorage.getItem("access-token");
+        xhr.open("GET", url);
+
+        xhr.send(data);
+    }
+
+    onFavIconClick = (index) => {
+        let currentLikes = this.state.likes;
+        currentLikes[index] = !currentLikes[index];
+        this.setState({'likes': currentLikes})
+    }
+}
+
+}
