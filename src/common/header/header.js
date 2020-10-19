@@ -39,14 +39,17 @@ class Header extends Component {
                                         src={this.props.profilePictureUrl}/>
                             </IconButton>
                             <div>
-                                <Menu open={this.state.menuState} onClose={this.onMenuClose}
+                            <Menu open={this.state.menuState} onClose={this.onMenuClose}
                                       anchorEl={this.state.anchorEl} getContentAnchorEl={null}
                                       anchorOrigin={{vertical: "bottom", horizontal: "right"}} keepMounted>
                                     <MenuItem><Typography>My Account</Typography></MenuItem>
+                                    <MenuItem onClick={this.onMyAccount}><Typography>My Account</Typography></MenuItem>
                                     <hr className='horizontal-line'/>
                                     <MenuItem onClick={this.onLogout}><Typography>Logout</Typography></MenuItem>
                                 </Menu>
-                            </div>
+                                    
+                                    
+                                     </div>
                         </div>
                     </Fragment>
             }
